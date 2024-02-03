@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import RedirectView
 from .views import (
     customers_list, customers_detail,
     meats_list, meats_detail,
@@ -24,6 +25,7 @@ from .views import (
 
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/admin', permanent=True)),
     path('admin/', admin.site.urls),
     # Customers
     path('customers/', customers_list, name='customers-list'),

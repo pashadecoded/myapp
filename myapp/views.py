@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import Customer, Meat, Purchase
 from .serializers import CustomerSerializer, MeatSerializer, PurchaseSerializer
 
+
 @api_view(['GET', 'POST'])
 def customers_list(request):
     if request.method == 'GET':
@@ -42,6 +43,7 @@ def customers_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def customers_detail(request, pk_or_phone):
@@ -86,6 +88,7 @@ def meats_list(request):
             return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['PUT', 'DELETE'])
 def meats_detail(request, pk):
     try:
@@ -104,6 +107,7 @@ def meats_detail(request, pk):
         meat.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 @api_view(['GET', 'POST'])
 def purchases_list(request):
     if request.method == 'GET':
@@ -117,6 +121,7 @@ def purchases_list(request):
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['PUT', 'DELETE'])
 def purchases_detail(request, pk):
