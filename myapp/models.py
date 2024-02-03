@@ -1,8 +1,6 @@
 # models.py
-
-import psycopg
-
 from django.db import models
+
 
 class Customer(models.Model):
     CustomerID = models.AutoField(primary_key=True)
@@ -12,10 +10,12 @@ class Customer(models.Model):
     Email = models.EmailField(max_length=100)
     Address = models.TextField()
 
+
 class Meat(models.Model):
     MeatID = models.AutoField(primary_key=True)
     MeatType = models.CharField(max_length=50)
     PricePerKg = models.DecimalField(max_digits=10, decimal_places=2)
+
 
 class Purchase(models.Model):
     PurchaseID = models.AutoField(primary_key=True)
@@ -24,6 +24,7 @@ class Purchase(models.Model):
     PurchaseDate = models.DateField()
     QuantityKg = models.DecimalField(max_digits=10, decimal_places=2)
     TotalPrice = models.DecimalField(max_digits=10, decimal_places=2)
+
 
 class Archive(models.Model):
     ArchiveID = models.AutoField(primary_key=True)
